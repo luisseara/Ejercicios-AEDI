@@ -1,43 +1,76 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # Script de gestión e interacción con el conversor PDF → Markdown
+# Compatible con entornos de agentes (CI/copilots): salida en vivo y logs visibles.
 
 set -Eeuo pipefail
 
+# --- Modo debug opcional (DEBUG=1) ---
+[ "${DEBUG:-0}" = "1" ] && set -x
+
+# --- Desbufferizar Python para ver logs en vivo incluso sin TTY ---
+export PYTHONUNBUFFERED=1
+
+# --- Detectar TTY y decidir si usar emojis ---
+if [ -t 1 ]; then
+  USE_TTY=1
+else
+  USE_TTY=0
+fi
+NO_EMOJI=${NO_EMOJI:-$((1 - ${USE_TTY}))}
+
+# --- Helpers de logging (duplican a stderr para UIs que muestran sólo stderr) ---
+say() {
+  # usage: say "con_emoji" "sin_emoji"
+  if [ "${NO_EMOJI}" = "1" ]; then
+    printf "%s\n" "$2" | tee /dev/stderr
+  else
+    printf "%s\n" "$1" | tee /dev/stderr
+  fi
+}
+log() { printf "%s\n" "$1" | tee /dev/stderr; }  # alias simple
+
+# --- Asegurar ejecución desde la carpeta del script ---
 cd "$(dirname "$0")"
 
+# --- Poetry dentro del proyecto ---
 export POETRY_VIRTUALENVS_IN_PROJECT=1
+
+# --- Wrapper Python vía Poetry en modo unbuffered ---
+poetry_py() {
+  poetry run python -u "$@"
+}
 
 ensure_poetry() {
     if ! command -v poetry >/dev/null 2>&1; then
-        echo "❌ Poetry no está instalado en el sistema."
-        echo "   Instálalo siguiendo las instrucciones oficiales: https://python-poetry.org/docs/"
+        log "❌ Poetry no está instalado en el sistema."
+        log "   Instálalo: https://python-poetry.org/docs/"
         exit 1
     fi
 }
 
 install_environment() {
     ensure_poetry
-    echo "📦 Instalando dependencias con Poetry..."
+    say "📦 Instalando dependencias con Poetry..." "Instalando dependencias con Poetry..."
     poetry install
 }
 
 ensure_environment() {
     if [ ! -d ".venv" ]; then
-        echo "⚙️  No se encontró el entorno .venv. Creándolo con Poetry..."
+        say "⚙️  No se encontró el entorno .venv. Creándolo con Poetry..." "No se encontró el entorno .venv. Creándolo con Poetry..."
         install_environment
     fi
 }
 
 update_environment() {
     ensure_poetry
-    echo "🔄 Actualizando dependencias con Poetry..."
+    say "🔄 Actualizando dependencias con Poetry..." "Actualizando dependencias con Poetry..."
     poetry update
 }
 
 reinstall_environment() {
     ensure_poetry
     if [ -d ".venv" ]; then
-        echo "🧹 Eliminando entorno virtual actual..."
+        say "🧹 Eliminando entorno virtual actual..." "Eliminando entorno virtual actual..."
         rm -rf .venv
     fi
     install_environment
@@ -46,13 +79,15 @@ reinstall_environment() {
 verify_dependencies() {
     ensure_poetry
     ensure_environment
-    echo "🔍 Verificando dependencias principales..."
-    poetry run python - <<'PYCODE'
+    say "🔍 Verificando dependencias principales..." "Verificando dependencias principales..."
+    poetry_py - <<'PYCODE'
 try:
     from docling.document_converter import DocumentConverter  # noqa: F401
-    print("✅ Docling verificado correctamente")
-except Exception as exc:  # pragma: no cover - ejecución manual
-    raise SystemExit(f"❌ Error al verificar dependencias: {exc}")
+    print("✅ Docling verificado correctamente", flush=True)
+except Exception as exc:
+    import sys
+    print(f"❌ Error al verificar dependencias: {exc}. Usa la opción update para arreglarlo!", file=sys.stderr, flush=True)
+    raise SystemExit(1)
 PYCODE
 }
 
@@ -60,11 +95,12 @@ run_converter() {
     ensure_poetry
     ensure_environment
     verify_dependencies
-    echo "📁 Directorio actual: $(pwd)"
-    echo "🐍 Python: $(poetry run which python)"
-    echo ""
-    echo "🔄 Ejecutando conversión PDF → Markdown..."
-    poetry run python simple_converter.py "$@"
+    log "📁 Directorio actual: $(pwd)"
+    log "🐍 Python: $(poetry run which python)"
+    printf "\n" | tee /dev/stderr
+    say "🔄 Ejecutando conversión PDF → Markdown..." "Ejecutando conversión PDF → Markdown..."
+    # Pasar argumentos tal cual al conversor
+    poetry_py simple_converter.py "$@"
 }
 
 print_usage() {
@@ -75,9 +111,15 @@ Uso del script:
   ./run_pdf2md.sh reinstall                # Regenerar el entorno desde cero
   ./run_pdf2md.sh convert [opciones]       # Ejecutar el conversor PDF → Markdown
   ./run_pdf2md.sh help                     # Mostrar la ayuda del conversor
+
+Sugerencias para agentes/CI:
+  - Ejecuta con:      bash ./run_pdf2md.sh convert ...   (evita invocarlo vía 'sh')
+  - Forzar logs:      NO_EMOJI=1 DEBUG=1 bash ./run_pdf2md.sh convert ...
+  - Python en vivo:   PYTHONUNBUFFERED=1 (ya activado por defecto)
 EOF
 }
 
+# --- Entrada principal ---
 if [ $# -eq 0 ]; then
     print_usage
     exit 0
@@ -100,7 +142,7 @@ case "$1" in
     help|-h|--help)
         ensure_poetry
         ensure_environment
-        poetry run python simple_converter.py --help
+        poetry_py -- simple_converter.py --help
         ;;
     *)
         print_usage
