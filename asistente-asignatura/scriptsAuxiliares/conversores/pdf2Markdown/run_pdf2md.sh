@@ -112,27 +112,20 @@ Uso del script:
   ./run_pdf2md.sh convert [opciones]         # Ejecutar el conversor PDF → Markdown
   ./run_pdf2md.sh help                       # Mostrar la ayuda del conversor
 
-Opciones de conversión disponibles:
-  ./run_pdf2md.sh convert                    # Convierte todos los PDFs en base_de_conocimiento (por defecto)
-  ./run_pdf2md.sh convert -f documento.pdf   # Convierte un archivo PDF específico
-  ./run_pdf2md.sh convert -d carpeta         # Convierte todos los PDFs de una carpeta (incluye subdirectorios)
-
-Argumentos del conversor:
-  -f FILE, --file FILE         Convierte un archivo PDF específico
-  -d DIRECTORY, --directory    Convierte todos los PDFs en el directorio especificado (incluye subdirectorios)
-
-Ejemplos prácticos:
-  ./run_pdf2md.sh convert -f ../../../base_de_conocimiento/enunciados/documento.pdf
-  ./run_pdf2md.sh convert -d ../../../base_de_conocimiento/enunciados
-  ./run_pdf2md.sh convert -d /ruta/completa/a/directorio
-
 Nota: Si no se especifica -f ni -d, se convierten todos los PDFs encontrados en base_de_conocimiento
 
 Sugerencias para agentes/CI:
   - Ejecuta con:      bash ./run_pdf2md.sh convert ...   (evita invocarlo vía 'sh')
   - Forzar logs:      NO_EMOJI=1 DEBUG=1 bash ./run_pdf2md.sh convert ...
   - Python en vivo:   PYTHONUNBUFFERED=1 (ya activado por defecto)
+
+Opciones de conversión disponibles:
+
 EOF
+  ensure_poetry
+  ensure_environment
+  python simple_converter.py -h
+
 }
 
 # --- Entrada principal ---
@@ -156,9 +149,7 @@ case "$1" in
         run_converter "$@"
         ;;
     help|-h|--help)
-        ensure_poetry
-        ensure_environment
-        poetry_py -- simple_converter.py --help
+        print_usage
         ;;
     *)
         print_usage

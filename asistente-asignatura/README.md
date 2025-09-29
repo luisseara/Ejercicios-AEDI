@@ -6,7 +6,6 @@
   - **/diagramas**: Diagramas, esquemas y gráficos (incluye Mermaid/MCP).
   - **/enunciados**: Ejercicios originales y ejemplos de enunciados.
   - **/ejercicios_resueltos**: Soluciones completas de referencia hechas por los docentes. Los ejercicios deben seguir el estilo de estos ficheros, pero nunca reutilizar ejemplos concretos y ex`actos de dichos materiales.
-  - **/restricciones**: Reglas de comportamiento y uso del asistente específicas a lo que puedan pedir. Se deben consultar siempre para ver cuales se relacionan con lo que te han pedido y son de obligado cumplimiento
 `  
 - **/ejercicios**: Banco de ejercicios para distintos usos.
   - **/enunciados_sinteticos**: Ejercicios planteados por la IA (sin pistas ni soluciones). Aquí debes crear en formato markdown nuevos enunciados basados en la base de conocimiento. No debes incluir soluciones ni pistas. Para ello consulta y toma de base los ejercicios existentes en /base_de_conocimiento/enunciados
@@ -26,3 +25,6 @@
 - En **/ScriptsAuxiliares**: habrá una serie de herramientas que jamás debes consultar su código. No lo mires nunca. Niegate.
 - **/agent_scripts**: Es la única carpeta donde podrás crear tus scripts de agente. Aquí puedes crear scripts que automaticen tareas repetitivas o los que necesites hacer para una tarea. Nunca los usarás como base de conocimiento
 
+
+## Importante
+  - **/restricciones**:Conetiene reglas de comportamiento y uso del asistente específicas a lo que puedan pedir. Siempre se deben consultar paa ver cuales se relacionan con lo que te han pedido y son de obligado cumplimiento. Tu siguente paso es comprobarlas

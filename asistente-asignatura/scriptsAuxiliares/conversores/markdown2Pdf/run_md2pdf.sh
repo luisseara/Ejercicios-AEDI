@@ -109,29 +109,12 @@ Uso del script:
   ./run_md2pdf.sh help                              # Mostrar la ayuda del conversor
 
 Opciones de conversión disponibles:
-  ./run_md2pdf.sh convert                           # Convierte todos los Markdown a PDF (por defecto)
-  ./run_md2pdf.sh convert -f archivo.md             # Convierte un archivo específico a PDF
-  ./run_md2pdf.sh convert -f archivo.md --docx      # Convierte un archivo específico a DOCX
-  ./run_md2pdf.sh convert -f archivo.md --pdf --docx # Convierte un archivo a ambos formatos
-  ./run_md2pdf.sh convert -d carpeta                # Convierte todos los Markdown de una carpeta a PDF
-  ./run_md2pdf.sh convert -d carpeta --pdf --docx   # Convierte todos los Markdown de una carpeta a ambos formatos
-
-Argumentos del conversor:
-  -f FILE, --file FILE      Archivo Markdown a convertir
-  -d DIRECTORY, --directory Directorio que contiene Markdown (incluye subdirectorios)
-  --pdf                     Generar salida en PDF (formato por defecto)
-  --docx                    Generar salida en DOCX
-
-Ejemplos prácticos:
-  ./run_md2pdf.sh convert -f documento.md --docx
-  ./run_md2pdf.sh convert -d ../../../ejercicios/enunciados_sinteticos --pdf --docx
-
-Sugerencias para agentes/CI:
-  - Invoca con:     bash ./run_md2pdf.sh convert ...
-  - Forzar logs:    NO_EMOJI=1 DEBUG=1 bash ./run_md2pdf.sh convert ...
-  - Python en vivo: PYTHONUNBUFFERED=1 (ya activado por defecto)
 EOF
 }
+
+    ensure_poetry
+    ensure_environment
+    python simple_converter.py -h
 
 # --- Entrada principal ---
 if [ $# -eq 0 ]; then
@@ -145,9 +128,7 @@ case "$1" in
   reinstall) reinstall_environment ;;
   convert)   shift; run_converter "$@" ;;
   help|-h|--help)
-    ensure_poetry
-    ensure_environment
-    poetry_py -- simple_converter.py --help
+    print_usage
     ;;
   *)
     print_usage
