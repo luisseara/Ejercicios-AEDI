@@ -106,11 +106,27 @@ run_converter() {
 print_usage() {
     cat <<'EOF'
 Uso del script:
-  ./run_pdf2md.sh install                  # Crear/actualizar el entorno con Poetry
-  ./run_pdf2md.sh update                   # Actualizar dependencias al último lock
-  ./run_pdf2md.sh reinstall                # Regenerar el entorno desde cero
-  ./run_pdf2md.sh convert [opciones]       # Ejecutar el conversor PDF → Markdown
-  ./run_pdf2md.sh help                     # Mostrar la ayuda del conversor
+  ./run_pdf2md.sh install                    # Crear/actualizar el entorno con Poetry
+  ./run_pdf2md.sh update                     # Actualizar dependencias al último lock
+  ./run_pdf2md.sh reinstall                  # Regenerar el entorno desde cero
+  ./run_pdf2md.sh convert [opciones]         # Ejecutar el conversor PDF → Markdown
+  ./run_pdf2md.sh help                       # Mostrar la ayuda del conversor
+
+Opciones de conversión disponibles:
+  ./run_pdf2md.sh convert                    # Convierte todos los PDFs en base_de_conocimiento (por defecto)
+  ./run_pdf2md.sh convert -f documento.pdf   # Convierte un archivo PDF específico
+  ./run_pdf2md.sh convert -d carpeta         # Convierte todos los PDFs de una carpeta (incluye subdirectorios)
+
+Argumentos del conversor:
+  -f FILE, --file FILE         Convierte un archivo PDF específico
+  -d DIRECTORY, --directory    Convierte todos los PDFs en el directorio especificado (incluye subdirectorios)
+
+Ejemplos prácticos:
+  ./run_pdf2md.sh convert -f ../../../base_de_conocimiento/enunciados/documento.pdf
+  ./run_pdf2md.sh convert -d ../../../base_de_conocimiento/enunciados
+  ./run_pdf2md.sh convert -d /ruta/completa/a/directorio
+
+Nota: Si no se especifica -f ni -d, se convierten todos los PDFs encontrados en base_de_conocimiento
 
 Sugerencias para agentes/CI:
   - Ejecuta con:      bash ./run_pdf2md.sh convert ...   (evita invocarlo vía 'sh')

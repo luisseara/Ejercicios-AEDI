@@ -1,129 +1,52 @@
 # Converters
 
-This directory contains various conversion utilities for the teaching assistant project. Each converter is designed as an independent tool with its own Python environment and dependencies.
+Este directorio contiene diversas utilidades de conversión para el proyecto asistente educativo. Cada conversor está diseñado como una herramienta independiente con su propio entorno Python y dependencias.
 
-## Documentation Requirements
+## Requisitos de Documentación
 
-**All converters must be documented in this README file** with the following information:
-- **Purpose**: Clear description of what the converter does
-- **Use cases**: When and why to use this converter
-- **Usage examples**: Command-line examples with common scenarios
-- **Input/Output**: Supported file formats and expected results
+**Todos los conversores deben estar documentados en este archivo README** con la siguiente información:
+- **Propósito**: Descripción clara de lo que hace el conversor
+- **Casos de uso**: Cuándo y por qué usar este conversor
+- **Ejemplos de uso**: Ejemplos de línea de comandos con escenarios comunes
+- **Entrada/Salida**: Formatos de archivo soportados y resultados esperados
 
-## Structure
+## Estructura
 
-Each converter subdirectory contains:
-- A complete Python project with its own `pyproject.toml`
-- An isolated virtual environment (`.venv/`)
-- A shell script for easy execution (`run_*.sh`)
-- Documentation section in this README
+Cada subdirectorio de conversor contiene:
+- Un proyecto Python completo con su propio `pyproject.toml`
+- Un entorno virtual aislado (`.venv/`)
+- Un script shell para ejecución fácil (`run_*.sh`)
+- Sección de documentación en este README
 
-## Available Converters
-
-### markdown2Pdf/
-**Purpose**: Converts Markdown files to PDF format using ReportLab for creating professional educational materials and documents.
-
-**Use cases**:
-- Generate PDF versions of exercise statements for distribution
-- Create printable study materials from Markdown content
-- Produce formal documentation from Markdown notes
-
-**Usage examples**:
-```bash
-cd markdown2Pdf/
-# Convert single Markdown file to PDF
-./run_md2pdf.sh convert -f input_file.md
-
-# Convert all Markdown files in a directory
-./run_md2pdf.sh convert -d /path/to/markdown/files
-
-# Convert with custom styling options
-./run_md2pdf.sh convert -f document.md --style academic
-```
-
-**Input/Output**: 
-- Input: `.md` (Markdown files)
-- Output: `.pdf` (Formatted PDF documents)
-
----
+## Conversores Disponibles
 
 ### pdf2Markdown/
-**Purpose**: Extracts and converts PDF content to Markdown format with intelligent code block detection for analysis and content processing.
+**Propósito**: Convierte archivos PDF a formato Markdown con detección inteligente de bloques de código utilizando Docling para análisis y procesamiento de contenido educativo.
 
-**Use cases**:
-- Convert PDF study materials to editable Markdown format
-- Extract content from academic papers for integration into knowledge base
-- Process programming exercise PDFs with proper code formatting
-- Prepare PDF content for digital analysis and search
+**Casos de uso**:
+- Convertir materiales de estudio en PDF a formato Markdown editable
+- Extraer contenido de documentos académicos para integración en base de conocimiento
+- Procesar PDFs de ejercicios de programación con formateo de código adecuado
+- Preparar contenido PDF para análisis digital y búsqueda
+- Migrar documentación existente de PDF a formato colaborativo
 
-**Usage examples**:
+
+**Ejemplos de uso**:
 ```bash
-cd pdf2Markdown/
-# Convert single PDF file
-./run_pdf2md.sh -f document.pdf
-
-# Convert all PDFs in directory and subdirectories
-./run_pdf2md.sh -d /path/to/pdf/files
-
-# Convert with specific default language for code blocks
-./run_pdf2md.sh -f programming_exercise.pdf -l java
-
-# Convert all files in base_de_conocimiento (default mode)
-./run_pdf2md.sh convert
+./run_pdf2md.sh help       # Mostrar ayuda
 ```
 
-**Input/Output**:
-- Input: `.pdf` (PDF documents)
-- Output: `.md` (Markdown files with formatted code blocks)
+### markdown2Pdf/
+**Propósito**: Convierte archivos Markdown a formato PDF y/o DOCX usando Pandoc y WeasyPrint para crear materiales educativos profesionales y documentación distribuible.
 
-**Special features**:
-- Automatic programming language detection (Java, Python, C++, C, JavaScript, SQL)
-- Code block formatting with syntax highlighting
-- Option to set default language to avoid auto-detection
-- Improved handling of nested code structures
+**Casos de uso**:
+- Generar versiones PDF de enunciados de ejercicios para distribución
+- Crear materiales de estudio imprimibles desde contenido Markdown
+- Producir documentación formal desde notas Markdown
+- Generar documentos Word editables para colaboración
+- Exportar contenido web a formatos de documento tradicionales
 
----
-
-## Usage Guidelines
-
-### Environment Setup
-Each converter manages its own virtual environment automatically. The shell scripts handle:
-- Virtual environment creation and activation
-- Dependency installation
-- Proper execution context
-
-### Execution
-Always run converters using their provided shell scripts:
-
+**Ejemplos de uso**:
 ```bash
-# General pattern
-cd [converter_name]/
-./run_[converter].sh [options]
+./run_md2pdf.sh help       # Mostrar ayuda
 ```
-
-### Adding New Converters
-When creating a new converter:
-
-1. Create subdirectory with converter name
-2. Set up isolated Python environment and dependencies
-3. Create `run_[name].sh` script for execution
-4. **Document the converter in this README** following the template:
-   ```markdown
-   ### converter_name/
-   **Purpose**: [Clear description]
-   **Use cases**: [When to use it]
-   **Usage examples**: [Command examples]
-   **Input/Output**: [Supported formats]
-   ```
-
-### Development Notes
-- **Never** examine the internal code of these converters
-- Each converter is self-contained and independent
-- Use only the provided shell script interfaces
-- Dependencies are automatically managed per project
-- Virtual environments are isolated to prevent conflicts
-
-## Important
-These tools are utilities only - they are not part of the main educational content and should be treated as black-box conversion tools. Focus on using their functionality rather than understanding their implementation.
-
-All converters must maintain this documentation standard for consistency and ease of use.

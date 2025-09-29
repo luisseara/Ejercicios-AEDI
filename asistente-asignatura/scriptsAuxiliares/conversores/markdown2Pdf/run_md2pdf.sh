@@ -102,12 +102,29 @@ run_converter() {
 print_usage() {
   cat <<'EOF'
 Uso del script:
-  ./run_md2pdf.sh install                 # Crear/actualizar el entorno con Poetry
-  ./run_md2pdf.sh update                  # Actualizar dependencias al último lock
-  ./run_md2pdf.sh reinstall               # Regenerar el entorno desde cero
-  ./run_md2pdf.sh convert [opciones]      # Ejecutar el conversor Markdown → PDF/DOCX
-                                          #   Ejemplo: ./run_md2pdf.sh convert --docx
-  ./run_md2pdf.sh help                    # Mostrar la ayuda del conversor
+  ./run_md2pdf.sh install                           # Crear/actualizar el entorno con Poetry
+  ./run_md2pdf.sh update                            # Actualizar dependencias al último lock
+  ./run_md2pdf.sh reinstall                         # Regenerar el entorno desde cero
+  ./run_md2pdf.sh convert [opciones]                # Ejecutar el conversor Markdown → PDF/DOCX
+  ./run_md2pdf.sh help                              # Mostrar la ayuda del conversor
+
+Opciones de conversión disponibles:
+  ./run_md2pdf.sh convert                           # Convierte todos los Markdown a PDF (por defecto)
+  ./run_md2pdf.sh convert -f archivo.md             # Convierte un archivo específico a PDF
+  ./run_md2pdf.sh convert -f archivo.md --docx      # Convierte un archivo específico a DOCX
+  ./run_md2pdf.sh convert -f archivo.md --pdf --docx # Convierte un archivo a ambos formatos
+  ./run_md2pdf.sh convert -d carpeta                # Convierte todos los Markdown de una carpeta a PDF
+  ./run_md2pdf.sh convert -d carpeta --pdf --docx   # Convierte todos los Markdown de una carpeta a ambos formatos
+
+Argumentos del conversor:
+  -f FILE, --file FILE      Archivo Markdown a convertir
+  -d DIRECTORY, --directory Directorio que contiene Markdown (incluye subdirectorios)
+  --pdf                     Generar salida en PDF (formato por defecto)
+  --docx                    Generar salida en DOCX
+
+Ejemplos prácticos:
+  ./run_md2pdf.sh convert -f documento.md --docx
+  ./run_md2pdf.sh convert -d ../../../ejercicios/enunciados_sinteticos --pdf --docx
 
 Sugerencias para agentes/CI:
   - Invoca con:     bash ./run_md2pdf.sh convert ...
