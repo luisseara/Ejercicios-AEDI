@@ -1,93 +1,303 @@
-# AEDI Agent
+# AEDI Agent 🤖
 
+**Asistente educativo inteligente para la asignatura Algoritmos y Estructuras de Datos I**
 
+Un sistema de IA especializado diseñado para apoyar el proceso de enseñanza-aprendizaje en la asignatura de Algoritmos y Estructuras de Datos I del Grado en Ingeniería Informática.
 
-## Getting started
+[![Universidad de Vigo](https://img.shields.io/badge/Universidad-Vigo-blue.svg)]()
+[![Curso](https://img.shields.io/badge/Curso-1º%20Grado%20Informática-green.svg)]()
+[![Cuatrimestre](https://img.shields.io/badge/Cuatrimestre-2º-orange.svg)]()
 
-To make it easy for you to get started with GitLab, here's a list of recommended next steps.
+## 📋 Tabla de Contenidos
 
-Already a pro? Just edit this README.md and make it your own. Want to make it easy? [Use the template at the bottom](#editing-this-readme)!
+- [Descripción](#descripción)
+- [Características](#características)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Instalación](#instalación)
+- [Uso](#uso)
+- [Metodología Pedagógica](#metodología-pedagógica)
+- [Herramientas Auxiliares](#herramientas-auxiliares)
+- [Contribuir](#contribuir)
+- [Licencia](#licencia)
 
-## Add your files
+## 🎯 Descripción
 
-- [ ] [Create](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#create-a-file) or [upload](https://docs.gitlab.com/ee/user/project/repository/web_editor.html#upload-a-file) files
-- [ ] [Add files using the command line](https://docs.gitlab.com/ee/gitlab-basics/add-file.html#add-a-file-using-the-command-line) or push an existing Git repository with the following command:
+AEDI Agent es un asistente educativo especializado que **NO es un proyecto de software tradicional**, sino una herramienta pedagógica diseñada para:
+
+- **Generar ejercicios personalizados** de algoritmos y estructuras de datos
+- **Proporcionar materiales de estudio** organizados por temas
+- **Ofrecer apoyo guiado** sin dar soluciones directas
+- **Mantener un banco de ejercicios** categorizado por dificultad
+- **Facilitar la conversión** entre formatos de documentos educativos
+
+### 🎓 Contexto Académico
+
+- **Asignatura**: Algoritmos y Estructuras de Datos I (O06G151V01107)
+- **Titulación**: Grado en Ingeniería Informática
+- **Universidad**: Universidad de Vigo
+- **Créditos**: 6 ECTS
+- **Curso**: 1º, 2º Cuatrimestre
+
+## ✨ Características
+
+### 🧠 Generación Inteligente de Contenido
+- Creación automática de ejercicios basados en patrones pedagógicos
+- Adaptación del nivel de dificultad según el progreso del estudiante
+- Generación de enunciados en formato Markdown y PDF
+
+### 📚 Gestión de Conocimiento
+- Base de conocimiento organizada por temas y dificultad
+- Materiales teóricos estructurados
+- Ejercicios resueltos de referencia (solo para docentes)
+
+### 🎯 Enfoque Pedagógico
+- **Aprendizaje guiado**: Proporciona pistas, no soluciones
+- **Metodología activa**: Fomenta el descubrimiento autónomo
+- **Evaluación formativa**: Feedback constructivo y personalizado
+
+### 🛠️ Herramientas de Conversión
+- **PDF → Markdown**: Conversión inteligente de documentos
+- **Markdown → PDF**: Generación de documentos profesionales
+- Detección automática de bloques de código
+
+## 📁 Estructura del Proyecto
 
 ```
-cd existing_repo
-git remote add origin https://dev.sing-group.org/gitlab/maped/aedi-agent.git
-git branch -M master
-git push -uf origin master
+aedi-agent/
+├── README.md                          # Este archivo
+├── AGENTS.md                          # Configuración de agentes
+├── asistente-asignatura/              # Núcleo del sistema educativo
+│   ├── README.md                      # Guía de uso del asistente
+│   ├── agent_scripts/                 # Scripts de automatización
+│   ├── base_de_conocimiento/          # Repositorio de materiales
+│   │   ├── asignatura/               # Información académica oficial
+│   │   ├── diagramas/                # Esquemas y gráficos
+│   │   ├── ejercicios_resueltos/     # Soluciones de referencia
+│   │   ├── enunciados/               # Ejercicios originales
+│   │   ├── restricciones/            # Reglas del sistema
+│   │   └── teoria/                   # Contenidos teóricos
+│   ├── ejercicios/                   # Banco de ejercicios
+│   │   ├── alumno/                   # Área de trabajo estudiantil
+│   │   ├── enunciados_sinteticos/    # Ejercicios generados por IA
+│   │   └── resueltos/                # Soluciones estudiantiles
+│   └── scriptsAuxiliares/            # Utilidades de apoyo
+│       └── conversores/              # Herramientas de conversión
+│           ├── pdf2Markdown/         # Conversor PDF → MD
+│           └── markdown2Pdf/         # Conversor MD → PDF
 ```
 
-## Integrate with your tools
+### 🔍 Descripción de Carpetas Clave
 
-- [ ] [Set up project integrations](https://dev.sing-group.org/gitlab/maped/aedi-agent/-/settings/integrations)
+#### 📖 `/base_de_conocimiento`
+Repositorio central de materiales educativos:
+- **`/asignatura`**: Guía docente y información académica oficial
+- **`/teoria`**: Apuntes y contenidos teóricos organizados
+- **`/enunciados`**: Ejercicios originales y ejemplos de referencia
+- **`/ejercicios_resueltos`**: Soluciones modelo (solo consulta docente)
+- **`/restricciones`**: Reglas de comportamiento del sistema
 
-## Collaborate with your team
+#### 🎯 `/ejercicios`
+Gestión del banco de ejercicios:
+- **`/enunciados_sinteticos`**: Ejercicios generados automáticamente
+- **`/alumno`**: Espacio de trabajo con pistas y esqueletos de código
+- **`/resueltos`**: Soluciones desarrolladas por estudiantes
 
-- [ ] [Invite team members and collaborators](https://docs.gitlab.com/ee/user/project/members/)
-- [ ] [Create a new merge request](https://docs.gitlab.com/ee/user/project/merge_requests/creating_merge_requests.html)
-- [ ] [Automatically close issues from merge requests](https://docs.gitlab.com/ee/user/project/issues/managing_issues.html#closing-issues-automatically)
-- [ ] [Enable merge request approvals](https://docs.gitlab.com/ee/user/project/merge_requests/approvals/)
-- [ ] [Set auto-merge](https://docs.gitlab.com/ee/user/project/merge_requests/merge_when_pipeline_succeeds.html)
+## 🚀 Instalación
 
-## Test and Deploy
+### Prerrequisitos
+- Python 3.9+
+- Poetry (gestión de dependencias)
+- Pandoc (conversión de documentos)
 
-Use the built-in continuous integration in GitLab.
+### Configuración Inicial
 
-- [ ] [Get started with GitLab CI/CD](https://docs.gitlab.com/ee/ci/quick_start/index.html)
-- [ ] [Analyze your code for known vulnerabilities with Static Application Security Testing (SAST)](https://docs.gitlab.com/ee/user/application_security/sast/)
-- [ ] [Deploy to Kubernetes, Amazon EC2, or Amazon ECS using Auto Deploy](https://docs.gitlab.com/ee/topics/autodevops/requirements.html)
-- [ ] [Use pull-based deployments for improved Kubernetes management](https://docs.gitlab.com/ee/user/clusters/agent/)
-- [ ] [Set up protected environments](https://docs.gitlab.com/ee/ci/environments/protected_environments.html)
+1. **Clonar el repositorio**:
+```bash
+git clone https://dev.sing-group.org/gitlab/maped/aedi-agent.git
+cd aedi-agent
+```
 
-***
+2. **Configurar herramientas de conversión**:
+```bash
+# Instalar conversor PDF → Markdown
+cd asistente-asignatura/scriptsAuxiliares/conversores/pdf2Markdown
+poetry install
 
-# Editing this README
+# Instalar conversor Markdown → PDF  
+cd ../markdown2Pdf
+poetry install
+```
 
-When you're ready to make this README your own, just edit this file and use the handy template below (or feel free to structure it however you want - this is just a starting point!). Thanks to [makeareadme.com](https://www.makeareadme.com/) for this template.
+3. **Verificar instalación**:
+```bash
+# Probar conversores
+./run_pdf2md.sh --help
+./run_md2pdf.sh --help
+```
 
-## Suggestions for a good README
+## 💡 Uso
 
-Every project is different, so consider which of these sections apply to yours. The sections used in the template are suggestions for most open source projects. Also keep in mind that while a README can be too long and detailed, too long is better than too short. If you think your README is too long, consider utilizing another form of documentation rather than cutting out information.
+### Para Estudiantes
 
-## Name
-Choose a self-explaining name for your project.
+#### 🎓 Obtener Ejercicios Personalizados
+```bash
+# El asistente genera automáticamente ejercicios basados en tu progreso
+# Los ejercicios aparecerán en /ejercicios/enunciados_sinteticos/
+```
 
-## Description
-Let people know what your project can do specifically. Provide context and add a link to any reference visitors might be unfamiliar with. A list of Features or a Background subsection can also be added here. If there are alternatives to your project, this is a good place to list differentiating factors.
+#### 🔍 Obtener Ayuda con Ejercicios
+```bash
+# Consulta la carpeta /ejercicios/alumno/ para:
+# - Esqueletos de código con TODOs
+# - Pistas y preguntas guía
+# - Descomposición de problemas complejos
+```
 
-## Badges
-On some READMEs, you may see small images that convey metadata, such as whether or not all the tests are passing for the project. You can use Shields to add some to your README. Many services also have instructions for adding a badge.
+### Para Docentes
 
-## Visuals
-Depending on what you are making, it can be a good idea to include screenshots or even a video (you'll frequently see GIFs rather than actual videos). Tools like ttygif can help, but check out Asciinema for a more sophisticated method.
+#### 📝 Generar Nuevos Ejercicios
+El sistema utiliza la base de conocimiento para crear ejercicios únicos que mantienen el rigor pedagógico pero evitan la repetición exacta de ejemplos existentes.
 
-## Installation
-Within a particular ecosystem, there may be a common way of installing things, such as using Yarn, NuGet, or Homebrew. However, consider the possibility that whoever is reading your README is a novice and would like more guidance. Listing specific steps helps remove ambiguity and gets people to using your project as quickly as possible. If it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually, also add a Requirements subsection.
+#### 🔄 Convertir Materiales
+```bash
+# Convertir PDFs a Markdown para análisis
+cd scriptsAuxiliares/conversores/pdf2Markdown
+./run_pdf2md.sh /ruta/al/archivo.pdf
 
-## Usage
-Use examples liberally, and show the expected output if you can. It's helpful to have inline the smallest example of usage that you can demonstrate, while providing links to more sophisticated examples if they are too long to reasonably include in the README.
+# Generar PDFs desde Markdown
+cd ../markdown2Pdf  
+./run_md2pdf.sh /ruta/al/archivo.md
+```
 
-## Support
-Tell people where they can go to for help. It can be any combination of an issue tracker, a chat room, an email address, etc.
+## 🎓 Metodología Pedagógica
 
-## Roadmap
-If you have ideas for releases in the future, it is a good idea to list them in the README.
+### Principios Fundamentales
 
-## Contributing
-State if you are open to contributions and what your requirements are for accepting them.
+1. **🚫 No Soluciones Directas**
+   - El sistema proporciona pistas, no respuestas completas
+   - Fomenta el pensamiento crítico y la resolución autónoma
 
-For people who want to make changes to your project, it's helpful to have some documentation on how to get started. Perhaps there is a script that they should run or some environment variables that they need to set. Make these steps explicit. These instructions could also be useful to your future self.
+2. **📈 Aprendizaje Progresivo**
+   - Ejercicios adaptados al nivel de conocimiento actual
+   - Incremento gradual de la complejidad
 
-You can also document commands to lint the code or run tests. These steps help to ensure high code quality and reduce the likelihood that the changes inadvertently break something. Having instructions for running tests is especially helpful if it requires external setup, such as starting a Selenium server for testing in a browser.
+3. **🔄 Feedback Constructivo**
+   - Análisis de errores comunes
+   - Sugerencias de mejora personalizadas
 
-## Authors and acknowledgment
-Show your appreciation to those who have contributed to the project.
+4. **🎯 Enfoque en Competencias**
+   - Desarrollo de habilidades de abstracción
+   - Fortalecimiento del razonamiento algorítmico
 
-## License
-For open source projects, say how it is licensed.
+### Temas Cubiertos
 
-## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+- **📊 Análisis de Complejidad**: Notaciones asintóticas y eficiencia
+- **🔗 Estructuras Dinámicas**: Listas enlazadas, nodos centinela
+- **📚 TADs Lineales**: Pilas, colas, listas
+- **🔍 Algoritmos de Búsqueda**: Lineal, binaria, hashing
+- **🔄 Recursividad**: Diseño y análisis de algoritmos recursivos
+- **📋 Algoritmos de Ordenación**: Inserción, selección, quicksort, mergesort
+- **🧪 Verificación**: Fundamentos de testing con JUnit
+
+## 🛠️ Herramientas Auxiliares
+
+### Conversores de Documentos
+
+#### PDF → Markdown
+- **Tecnología**: Docling para análisis inteligente
+- **Características**: Detección automática de bloques de código
+- **Uso**: Migración de materiales existentes
+
+#### Markdown → PDF
+- **Tecnología**: Pandoc con templates personalizados
+- **Características**: Formato profesional para entrega
+- **Uso**: Generación de ejercicios para exámenes
+
+### Gestión de Entornos
+- Cada herramienta tiene su propio entorno Python aislado
+- Gestión de dependencias con Poetry
+- Scripts de instalación automatizados
+
+## 📋 Reglas de Programación
+
+### Estándares de Código Java
+- **Idioma**: Código y comentarios en inglés
+- **Modificadores**: Acceso explícito en todos los métodos y atributos
+- **Encapsulación**: Atributos siempre privados con getters/setters
+- **Restricciones**: No usar `break` (excepto switch) ni `return void`
+- **Versión**: Java 21 (API estándar únicamente)
+
+### Estructura de Clases
+```java
+public class ExampleClass {
+    private int privateAttribute;
+    
+    public int getPrivateAttribute() {
+        return this.privateAttribute;
+    }
+    
+    public void setPrivateAttribute(int privateAttribute) {
+        this.privateAttribute = privateAttribute;
+    }
+}
+```
+
+## 🤝 Contribuir
+
+### Para Educadores
+1. **Añadir Materiales**: Contribuir con nuevos ejercicios o teoría
+2. **Mejorar Restricciones**: Actualizar reglas pedagógicas
+3. **Reportar Issues**: Identificar problemas en la generación de contenido
+
+### Para Desarrolladores
+1. **Mejorar Herramientas**: Optimizar conversores y scripts
+2. **Añadir Funcionalidades**: Nuevas utilidades educativas
+3. **Documentación**: Mantener y mejorar la documentación
+
+### Proceso de Contribución
+```bash
+# 1. Fork del repositorio
+# 2. Crear rama feature
+git checkout -b feature/nueva-funcionalidad
+
+# 3. Desarrollar y commitear
+git commit -m "feat: descripción de la nueva funcionalidad"
+
+# 4. Push y merge request
+git push origin feature/nueva-funcionalidad
+```
+
+## 📞 Soporte
+
+- **Coordinadora**: Rosalía Laza Fidalgo (rlaza@uvigo.es)
+- **Plataforma**: [Moovi - Universidad de Vigo](http://moovi.uvigo.gal)
+- **Issues**: Usar el sistema de issues de GitLab para reportar problemas
+
+## 🛣️ Roadmap
+
+### Versión Actual (v1.0)
+- ✅ Sistema base de generación de ejercicios
+- ✅ Conversores PDF/Markdown
+- ✅ Base de conocimiento inicial
+
+### Próximas Funcionalidades
+- 🔄 Integración con sistemas de evaluación automática
+- 📊 Dashboard de progreso estudiantil
+- 🤖 IA más avanzada para personalización
+- 📱 Interfaz web responsive
+
+## 📄 Licencia
+
+Este proyecto está desarrollado para uso educativo en el contexto de la Universidad de Vigo. 
+
+## 🏆 Reconocimientos
+
+- **Universidad de Vigo** - Departamento de Informática
+- **Equipo Docente** - Por la definición de requisitos pedagógicos
+- **SING Group** - Por el soporte técnico y metodológico
+
+---
+
+**🎓 AEDI Agent - Transformando la educación en algoritmos y estructuras de datos**
+
+*Desarrollado con ❤️ para estudiantes de Ingeniería Informática*
