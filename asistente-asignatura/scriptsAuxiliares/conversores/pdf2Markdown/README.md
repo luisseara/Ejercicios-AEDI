@@ -1,6 +1,6 @@
 # PDF to Markdown Converter
 
-Un conversor Python específico para el proyecto que convierte archivos PDF a formato Markdown utilizando [Docling](https://github.com/DS4SD/docling). Este proyecto utiliza [Poetry](https://python-poetry.org/) para gestionar un entorno virtual autocontenido dentro de la carpeta `pdf2Markdown`.
+Un conversor Python específico para el proyecto que convierte archivos PDF a formato Markdown utilizando [Docling](https://github.com/DS4SD/docling). Este proyecto utiliza [PDM](https://pdm.fming.dev/latest/) para gestionar un entorno virtual autocontenido dentro de la carpeta `pdf2Markdown`.
 
 ## ✅ Estado de Conversión Verificado
 
@@ -17,7 +17,7 @@ cd asistente-asignatura/scriptsAuxiliares/conversores/pdf2Markdown
 ./run_pdf2md.sh install
 ```
 
-### Actualizar dependencias según `poetry.lock`
+### Actualizar dependencias según `pdm.lock`
 ```bash
 ./run_pdf2md.sh update
 ```
@@ -43,18 +43,18 @@ cd asistente-asignatura/scriptsAuxiliares/conversores/pdf2Markdown
 
 ```
 pdf2Markdown/
-├── .venv/               # Entorno Poetry (generado automáticamente)
+├── .venv/               # Entorno PDM (generado automáticamente)
 ├── simple_converter.py  # Conversor principal usando Docling
 ├── run_pdf2md.sh        # Script de gestión y ejecución
-├── requirements.txt     # Compatibilidad legacy (no es necesario con Poetry)
-├── pyproject.toml       # Configuración del proyecto (Poetry)
-├── poetry.lock          # Versionado exacto de dependencias
+├── requirements.txt     # Compatibilidad legacy (no es necesario con PDM)
+├── pyproject.toml       # Configuración del proyecto (PDM)
+├── pdm.lock             # Versionado exacto de dependencias
 └── README.md            # Esta documentación
 ```
 
-## 🔧 Entorno gestionado con Poetry
+## 🔧 Entorno gestionado con PDM
 
-Este proyecto incluye su propio entorno virtual (`.venv/`) gestionado con Poetry:
+Este proyecto incluye su propio entorno virtual (`.venv/`) gestionado con PDM:
 - **Es autocontenido** - No interfiere con otros proyectos Python.
 - **Se crea y mantiene** mediante los comandos `install`, `update` y `reinstall` del script.
 - **Incluye dependencias oficiales de Docling** para garantizar la conversión estable de PDF a Markdown.
@@ -64,6 +64,7 @@ Este proyecto incluye su propio entorno virtual (`.venv/`) gestionado con Poetry
 ### Detección Automática de Código
 - **Reconocimiento inteligente** de bloques de código en múltiples lenguajes
 - **Lenguajes soportados**: Java, Python, C++, C, JavaScript, SQL, y más
+- **Etiquetado automático** de los bloques con su lenguaje para un resaltado correcto
 - **Formateo automático** con bloques de código delimitados (```)
 - **Preservación de estructura** e indentación del código original
 

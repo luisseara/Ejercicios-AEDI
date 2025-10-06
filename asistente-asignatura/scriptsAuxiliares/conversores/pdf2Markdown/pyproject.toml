@@ -1,22 +1,30 @@
-[tool.poetry]
+[project]
 name = "pdf2markdown-simple"
 version = "1.0.0"
 description = "Simple PDF to Markdown converter for base_de_conocimiento"
-authors = ["Teaching Agent <devnull@example.com>"]
-package-mode = false
+authors = [
+  { name = "Teaching Agent", email = "devnull@example.com" }
+]
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+  "docling>=2.48.2",
+  "docling-core>=2.48.2",
+  "docling-parse>=2.48.2",
+  "pygments>=2.15.0",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0"
-docling = ">=2.48.2"
-docling-core = ">=2.48.2"
-docling-parse = ">=2.48.2"
-
-[tool.poetry.group.dev.dependencies]
-pytest = ">=7.0.0"
-
-[tool.poetry.scripts]
+[project.scripts]
 pdf2md = "simple_converter:main"
 
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+  "pytest>=7.0.0",
+]
+
 [build-system]
-requires = ["poetry-core>=1.9.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"

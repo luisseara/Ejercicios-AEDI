@@ -1,19 +1,24 @@
-[tool.poetry]
+[project]
 name = "markdown2pdf-simple"
-package-mode = false
 version = "1.1.0"
 description = "Conversor de Markdown del proyecto teaching-agent usando Pandoc"
+readme = "README.md"
+requires-python = ">=3.10,<4.0"
+dependencies = [
+  "weasyprint>=59.0",
+]
 
-[tool.poetry.dependencies]
-python = ">=3.10,<4.0"
-weasyprint = ">=59.0"
-
-[tool.poetry.group.dev.dependencies]
-pytest = ">=7.0.0"
-
-[tool.poetry.scripts]
+[project.scripts]
 md2pdf = "simple_converter:main"
 
+[tool.pdm]
+distribution = false
+
+[tool.pdm.dev-dependencies]
+dev = [
+  "pytest>=7.0.0",
+]
+
 [build-system]
-requires = ["poetry-core>=1.9.0"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"

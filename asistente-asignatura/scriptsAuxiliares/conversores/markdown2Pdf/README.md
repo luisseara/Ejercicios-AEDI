@@ -1,6 +1,6 @@
 # Markdown to PDF/DOCX Converter
 
-Herramienta Python para el proyecto aedi-agent que utiliza [Pandoc](https://pandoc.org/) para convertir archivos Markdown a formato PDF y/o DOCX. El proyecto utiliza [Poetry](https://python-poetry.org/) para gestionar un entorno virtual aislado dentro de la carpeta `markdown2Pdf` y así disponer de WeasyPrint necesario para la exportación a PDF de alta calidad.
+Herramienta Python para el proyecto aedi-agent que utiliza [Pandoc](https://pandoc.org/) para convertir archivos Markdown a formato PDF y/o DOCX. El proyecto utiliza [PDM](https://pdm.fming.dev/latest/) para gestionar un entorno virtual aislado dentro de la carpeta `markdown2Pdf` y así disponer de WeasyPrint necesario para la exportación a PDF de alta calidad.
 
 > 💡 **Requisito del sistema**: Instala Pandoc en tu sistema. En distribuciones Debian/Ubuntu: `sudo apt install pandoc`
 
@@ -12,7 +12,7 @@ cd asistente-asignatura/scriptsAuxiliares/conversores/markdown2Pdf
 ./run_md2pdf.sh install
 ```
 
-### Actualizar dependencias según `poetry.lock`
+### Actualizar dependencias según `pdm.lock`
 ```bash
 ./run_md2pdf.sh update
 ```
@@ -48,13 +48,13 @@ cd asistente-asignatura/scriptsAuxiliares/conversores/markdown2Pdf
 
 ```
 markdown2Pdf/
-├── .venv/                    # Entorno Poetry (generado automáticamente)
+├── .venv/                    # Entorno PDM (generado automáticamente)
 ├── simple_converter.py       # Conversor Markdown → PDF/DOCX usando Pandoc
 ├── run_md2pdf.sh             # Script de gestión y ejecución
 ├── pandoc-highlight.theme    # Tema de resaltado de código personalizado
-├── requirements.txt          # Compatibilidad legacy (no necesario con Poetry)
-├── pyproject.toml            # Configuración del proyecto (Poetry)
-├── poetry.lock               # Versionado exacto de dependencias
+├── requirements.txt          # Compatibilidad legacy (no necesario con PDM)
+├── pyproject.toml            # Configuración del proyecto (PDM)
+├── pdm.lock                  # Versionado exacto de dependencias
 └── README.md                 # Esta documentación
 ```
 
@@ -79,7 +79,7 @@ markdown2Pdf/
 - **Exportación consistente** entre PDF y DOCX
 
 ### Gestión de Dependencias
-- **Environment aislado con Poetry** que no interfiere con otras instalaciones Python
+- **Entorno aislado con PDM** que no interfiere con otras instalaciones Python
 - **WeasyPrint integrado** para renderizado PDF de alta calidad
 - **Pandoc como motor principal** para máxima compatibilidad y calidad
 
@@ -146,7 +146,7 @@ ejercicios/
 
 ### Verificar instalación
 ```bash
-# Verificar dependencias del sistema y Poetry
+# Verificar dependencias del sistema y PDM
 ./run_md2pdf.sh install
 
 # Mostrar ayuda completa del conversor
@@ -156,8 +156,8 @@ ejercicios/
 ### Dependencias del sistema
 El script verifica automáticamente:
 - **Pandoc**: Motor principal de conversión
-- **WeasyPrint**: Motor PDF (instalado vía Poetry)
-- **Python**: Entorno de ejecución (gestionado por Poetry)
+- **WeasyPrint**: Motor PDF (instalado vía PDM)
+- **Python**: Entorno de ejecución (gestionado por PDM)
 
 ## ✨ Estado del Proyecto
 

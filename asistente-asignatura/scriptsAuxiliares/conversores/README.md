@@ -14,7 +14,7 @@ Este directorio contiene diversas utilidades de conversión para el proyecto asi
 
 Cada subdirectorio de conversor contiene:
 - Un proyecto Python completo con su propio `pyproject.toml`
-- Un entorno virtual aislado (`.venv/`)
+- Un entorno virtual aislado (`.venv/`) gestionado con [PDM](https://pdm.fming.dev/)
 - Un script shell para ejecución fácil (`run_*.sh`)
 - Sección de documentación en este README
 
