@@ -98,8 +98,16 @@ public class RankingJugadores {
      * @param puntuacion puntuación del jugador
      */
     public void insertarOrdenado(String gamertag, int puntuacion) {
-        // TODO: Implementar este método
-        throw new UnsupportedOperationException("Método no implementado");
+        NodoJugador current = this.header;
+        
+        while (current.getNext() != this.trailer && current.getNext().getPuntuacion() >= puntuacion) {
+            current = current.getNext();
+        }
+
+        NodoJugador nuevo = new NodoJugador(gamertag, puntuacion, current.getNext());
+        current.setNext(nuevo);
+
+        this.size++;
     }
 
     // ── Métodos auxiliares (ya implementados) ──────────────────────────
