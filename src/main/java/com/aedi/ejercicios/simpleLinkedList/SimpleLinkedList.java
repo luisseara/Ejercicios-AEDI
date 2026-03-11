@@ -72,8 +72,27 @@ public class SimpleLinkedList {
      * @param y valor del nodo tras el cual se colocará x
      */
     public void reposition(int x, int y) {
-        // TODO: Implementar este método
-        throw new UnsupportedOperationException("Método no implementado");
+        Node current = first;
+        Node nodeX = null;
+        Node nodeY = null;
+        if (numberOfValues == 0) {
+            throw new IllegalArgumentException("Lista vacía");
+        }
+        while (current.getNext() != null) {
+            if (nodeX == null && current.getNext().hasValue(x)) {
+                nodeX = current.getNext();
+                current.setNext(nodeX.getNext());
+            } else {
+                if (current.getNext().hasValue(y)) {
+                    nodeY = current.getNext();
+                }
+                current = current.getNext();
+            }
+        }
+        if (nodeX != null && nodeY != null && x != y) {
+            nodeX.setNext(nodeY.getNext());
+            nodeY.setNext(nodeX);
+        }
     }
 
     // ── Métodos auxiliares (ya implementados) ──────────────────────────
@@ -115,7 +134,7 @@ public class SimpleLinkedList {
         Node current = this.first.getNext();
         while (current != null) {
             if (sb.length() > 0) sb.append(" → ");
-            sb.append("[").append(current.getElement()).append("]");
+            sb.append("[").append(current.getValue()).append("]");
             current = current.getNext();
         }
         return sb.toString();

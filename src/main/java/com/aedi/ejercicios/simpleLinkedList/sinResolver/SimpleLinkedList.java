@@ -115,7 +115,7 @@ public class SimpleLinkedList {
         Node current = this.first.getNext();
         while (current != null) {
             if (sb.length() > 0) sb.append(" → ");
-            sb.append("[").append(current.getElement()).append("]");
+            sb.append("[").append(current.getValue()).append("]");
             current = current.getNext();
         }
         return sb.toString();

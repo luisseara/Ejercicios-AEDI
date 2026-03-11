@@ -21,10 +21,10 @@ public class SimpleLinkedListTest {
         lista.reposition(7, 9); // Mover 7 después de 9
 
         assertEquals(4, lista.getNumberOfValues());
-        assertEquals(3, lista.getNodoEnPosicion(0).getElement());
-        assertEquals(1, lista.getNodoEnPosicion(1).getElement());
-        assertEquals(9, lista.getNodoEnPosicion(2).getElement());
-        assertEquals(7, lista.getNodoEnPosicion(3).getElement());
+        assertEquals(3, lista.getNodoEnPosicion(0).getValue());
+        assertEquals(1, lista.getNodoEnPosicion(1).getValue());
+        assertEquals(9, lista.getNodoEnPosicion(2).getValue());
+        assertEquals(7, lista.getNodoEnPosicion(3).getValue());
     }
 
     @Test
@@ -38,10 +38,10 @@ public class SimpleLinkedListTest {
         lista.reposition(3, 1); // Mover 3 después de 1
 
         assertEquals(4, lista.getNumberOfValues());
-        assertEquals(7, lista.getNodoEnPosicion(0).getElement());
-        assertEquals(1, lista.getNodoEnPosicion(1).getElement());
-        assertEquals(3, lista.getNodoEnPosicion(2).getElement());
-        assertEquals(9, lista.getNodoEnPosicion(3).getElement());
+        assertEquals(7, lista.getNodoEnPosicion(0).getValue());
+        assertEquals(1, lista.getNodoEnPosicion(1).getValue());
+        assertEquals(3, lista.getNodoEnPosicion(2).getValue());
+        assertEquals(9, lista.getNodoEnPosicion(3).getValue());
     }
 
     @Test
@@ -55,10 +55,10 @@ public class SimpleLinkedListTest {
         lista.reposition(9, 3); // Mover 9 después de 3
 
         assertEquals(4, lista.getNumberOfValues());
-        assertEquals(3, lista.getNodoEnPosicion(0).getElement());
-        assertEquals(9, lista.getNodoEnPosicion(1).getElement());
-        assertEquals(7, lista.getNodoEnPosicion(2).getElement());
-        assertEquals(1, lista.getNodoEnPosicion(3).getElement());
+        assertEquals(3, lista.getNodoEnPosicion(0).getValue());
+        assertEquals(9, lista.getNodoEnPosicion(1).getValue());
+        assertEquals(7, lista.getNodoEnPosicion(2).getValue());
+        assertEquals(1, lista.getNodoEnPosicion(3).getValue());
     }
 
     @Test
@@ -70,8 +70,8 @@ public class SimpleLinkedListTest {
         lista.reposition(5, 10); // Mover 5 después de 10
 
         assertEquals(2, lista.getNumberOfValues());
-        assertEquals(10, lista.getNodoEnPosicion(0).getElement());
-        assertEquals(5, lista.getNodoEnPosicion(1).getElement());
+        assertEquals(10, lista.getNodoEnPosicion(0).getValue());
+        assertEquals(5, lista.getNodoEnPosicion(1).getValue());
     }
 
     @Test
@@ -84,9 +84,9 @@ public class SimpleLinkedListTest {
         lista.reposition(1, 2); // Mover 1 después de 2
 
         assertEquals(3, lista.getNumberOfValues());
-        assertEquals(2, lista.getNodoEnPosicion(0).getElement());
-        assertEquals(1, lista.getNodoEnPosicion(1).getElement());
-        assertEquals(3, lista.getNodoEnPosicion(2).getElement());
+        assertEquals(2, lista.getNodoEnPosicion(0).getValue());
+        assertEquals(1, lista.getNodoEnPosicion(1).getValue());
+        assertEquals(3, lista.getNodoEnPosicion(2).getValue());
     }
 
     @Test

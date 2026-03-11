@@ -5,11 +5,11 @@ package com.aedi.ejercicios.simpleLinkedList;
  */
 public class Node {
 
-    private int element;
+    private int value;
     private Node next;
 
-    public Node(int element, Node next) {
-        this.element = element;
+    public Node(int value, Node next) {
+        this.value = value;
         this.next = next;
     }
 
@@ -18,12 +18,16 @@ public class Node {
         this(0, next);
     }
 
-    public int getElement() {
-        return this.element;
+    public int getValue() {
+        return this.value;
     }
 
-    public void setElement(int element) {
-        this.element = element;
+    public void setValue(int value) {
+        this.value = value;
+    }
+
+    public boolean hasValue(int value) {
+        return getValue() == value;
     }
 
     public Node getNext() {
