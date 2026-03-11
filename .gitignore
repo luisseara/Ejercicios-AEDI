@@ -1,6 +1,7 @@
 /asistente-asignatura/agent_scripts/
 /asistente-asignatura/ejercicios/**/*.pdf
 /asistente-asignatura/ejercicios/**/*.md
+**/.DS_store
 **/.venv/
 **/.env/
 **/.env
