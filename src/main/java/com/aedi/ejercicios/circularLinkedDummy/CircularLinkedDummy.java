@@ -78,8 +78,18 @@ public class CircularLinkedDummy {
      * @return true si se realizó la operación, false en caso contrario
      */
     public boolean moveUpPositions(int n) {
-        // TODO: Implementar este método
-        throw new UnsupportedOperationException("Método no implementado");
+        if (this.numberOfValues == 0 || n == 1 || (n > this.numberOfValues)) return false;
+
+        Node current = this.last;
+
+        for (int i = 0; i < n -1; i++) {
+            current = current.getNext();
+        }
+        Node target = current.getNext();
+        current.setNext(current.getNext().getNext());
+        target.setNext(this.last.getNext());
+        this.last.setNext(target);
+        return true;
     }
 
     // ── Métodos auxiliares (ya implementados) ──────────────────────────
